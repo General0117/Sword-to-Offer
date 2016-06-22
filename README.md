@@ -53,6 +53,9 @@
 ## 48. [不能被继承的类](48_SealedClass)
 ## 49. [把字符串转化成整数](49_StringToInt)
 ## 50. [树中两个节点最低公共祖先](50_CommonForeFatherInTree)
+
+**注:以下为《剑指offer》纪念版新增加的题目**
+
 ## 51. [数组中重复的数字](51_DuplicationInArray)
 ## 52. [构建乘积数组](52_ArrayConstruction)
 ## 53. [正则表达式匹配](53_RegularExpressionsMatching)
