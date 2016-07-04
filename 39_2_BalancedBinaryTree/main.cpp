@@ -10,27 +10,53 @@ struct BinaryTreeNode{
     {}
 };
 
-int Depth(BinaryTreeNode* root)
+//int Depth(BinaryTreeNode* root)
+//{
+//    if(root==NULL)
+//        return 0;
+//    int LeftDepth=Depth(root->left);
+//    int RightDepth=Depth(root->right);
+//    return LeftDepth>RightDepth?LeftDepth+1:RightDepth+1;
+//}
+//
+//bool IsBalancedTree(BinaryTreeNode* root)
+//{
+//    if(root==NULL)
+//        return true;
+//    int LeftDepth,RightDepth;
+//    LeftDepth=Depth(root->left);
+//    RightDepth=Depth(root->right);
+//    if(abs(LeftDepth-RightDepth)<=1)
+//        return true;
+//    else
+//        return false;
+//}
+bool _IsBalancedTree(BinaryTreeNode* root,int& depth)
 {
     if(root==NULL)
-        return 0;
-    int LeftDepth=Depth(root->left);
-    int RightDepth=Depth(root->right);
-    return LeftDepth>RightDepth?LeftDepth+1:RightDepth+1;
+    {
+        depth=0;
+        return true;
+    }
+    int left,right;
+    if(_IsBalancedTree(root->left,left) && _IsBalancedTree(root->right,right))
+    {
+        int diff=right-left;
+        if(diff>=-1 && diff <=1)
+        {
+            depth=left>right?left+1:right+1;
+            return true;
+        }
+    }
+    return false;
 }
 
 bool IsBalancedTree(BinaryTreeNode* root)
 {
-    if(root==NULL)
-        return true;
-    int LeftDepth,RightDepth;
-    LeftDepth=Depth(root->left);
-    RightDepth=Depth(root->right);
-    if(abs(LeftDepth-RightDepth)<=1)
-        return true;
-    else
-        return false;
+    int depth=0;
+    return _IsBalancedTree(root,depth);
 }
+
 
 //------测试代码------
 BinaryTreeNode* CreateTree(const int* PreOrder,const int* InOrder,int n)
